@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-08-19T13:01:02.610608+00:00",
+  "codebase": "/home/carlpatchett/repos/null-space/evals/messy_codebase",
+  "total_files": 14,
+  "total_directories": 19,
+  "total_tokens": 761,
+  "memory_footprint_kb": 104,
+  "avg_false_positive_rate": 5.3197118270395384e-08,
+  "total_queries": 14,
+  "false_negatives": 0,
+  "recall": 1.0,
+  "avg_pruned_percent": 95.08,
+  "avg_query_latency_ms": 0.228,
+  "otel_spans_count": 29,
+  "query_results": [
+    {
+      "token": "ExponentialBackoffRetryStrategy",
+      "expected_dirs": [
+        "legacy_app/payments"
+      ],
+      "candidate_dirs": [
+        "legacy_app/payments"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.536095,
+      "false_negative": false
+    },
+    {
+      "token": "StripePaymentGatewayClient",
+      "expected_dirs": [
+        "legacy_app/payments"
+      ],
+      "candidate_dirs": [
+        "legacy_app/payments"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.49323,
+      "false_negative": false
+    },
+    {
+      "token": "NotificationDeliveryBackoff",
+      "expected_dirs": [
+        "legacy_app/notifications"
+      ],
+      "candidate_dirs": [
+        "legacy_app/notifications"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.52058,
+      "false_negative": false
+    },
+    {
+      "token": "ReconcileSubscriptionBillingCycles",
+      "expected_dirs": [
+        "legacy_app/billing"
+      ],
+      "candidate_dirs": [
+        "legacy_app/billing"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.535683,
+      "false_negative": false
+    },
+    {
+      "token": "MonthlyUsageAggregator",
+      "expected_dirs": [
+        "legacy_app/analytics"
+      ],
+      "candidate_dirs": [
+        "legacy_app/analytics"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.491396,
+      "false_negative": false
+    },
+    {
+      "token": "EncryptedYamlConfigLoader",
+      "expected_dirs": [
+        "legacy_app/io"
+      ],
+      "candidate_dirs": [
+        "legacy_app/io"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.424165,
+      "false_negative": false
+    },
+    {
+      "token": "JWTTokenValidationFilter",
+      "expected_dirs": [
+        "services/auth"
+      ],
+      "candidate_dirs": [
+        "services/auth"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.482296,
+      "false_negative": false
+    },
+    {
+      "token": "DatabaseMaxIdleConnectionPoolSize",
+      "expected_dirs": [
+        "services/database"
+      ],
+      "candidate_dirs": [
+        "services/database"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.480958,
+      "false_negative": false
+    },
+    {
+      "token": "SmtpRelayConnectionPool",
+      "expected_dirs": [
+        "tools/mailer"
+      ],
+      "candidate_dirs": [
+        "tools/mailer"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.525692,
+      "false_negative": false
+    },
+    {
+      "token": "SnapshotDatabaseCluster",
+      "expected_dirs": [
+        "tools/backup"
+      ],
+      "candidate_dirs": [
+        "tools/backup"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.477949,
+      "false_negative": false
+    },
+    {
+      "token": "useAuthenticationContext",
+      "expected_dirs": [
+        "frontend/src/auth"
+      ],
+      "candidate_dirs": [
+        "frontend/src/auth"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.438717,
+      "false_negative": false
+    },
+    {
+      "token": "prod_database_replica",
+      "expected_dirs": [
+        "infra/terraform"
+      ],
+      "candidate_dirs": [
+        "infra/terraform"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.443629,
+      "false_negative": false
+    },
+    {
+      "token": "redis_cluster_master_nodes",
+      "expected_dirs": [
+        "config"
+      ],
+      "candidate_dirs": [
+        "config"
+      ],
+      "candidate_files_count": 1,
+      "pruned_percent": 94.7,
+      "duration_ms": 0.47307,
+      "false_negative": false
+    },
+    {
+      "token": "DefinitivelyAbsentToken_XYZ_99999",
+      "expected_dirs": [],
+      "candidate_dirs": [],
+      "candidate_files_count": 0,
+      "pruned_percent": 100,
+      "duration_ms": 0.479231,
+      "false_negative": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[redis]
+redis_cluster_master_nodes = ["10.0.1.10:6379", "10.0.1.11:6379", "10.0.1.12:6379"]
+connection_timeout_ms = 2500
+
+[security]
+jwt_secret_rotation_interval = "720h"
+enable_mfa_enforcement = true

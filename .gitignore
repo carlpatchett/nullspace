@@ -1,0 +1,22 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test and Trace outputs
+*.jsonl
+null_space_trace.jsonl
+evals/results/*.jsonl
+eval_trace.jsonl
+trace_augmented.jsonl
+
+.ruff_cache/
+# IDE and OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

@@ -1,0 +1,89 @@
+{
+  "codebase": "evals/messy_codebase",
+  "targets": [
+    {
+      "token": "ExponentialBackoffRetryStrategy",
+      "expected_dirs": ["legacy_app/payments"],
+      "expected_files": ["legacy_app/payments/retry.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "StripePaymentGatewayClient",
+      "expected_dirs": ["legacy_app/payments"],
+      "expected_files": ["legacy_app/payments/stripe_client.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "NotificationDeliveryBackoff",
+      "expected_dirs": ["legacy_app/notifications"],
+      "expected_files": ["legacy_app/notifications/backoff.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "ReconcileSubscriptionBillingCycles",
+      "expected_dirs": ["legacy_app/billing"],
+      "expected_files": ["legacy_app/billing/invoice_writer.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "MonthlyUsageAggregator",
+      "expected_dirs": ["legacy_app/analytics"],
+      "expected_files": ["legacy_app/analytics/usage_report.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "EncryptedYamlConfigLoader",
+      "expected_dirs": ["legacy_app/io"],
+      "expected_files": ["legacy_app/io/config_loader.py"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "JWTTokenValidationFilter",
+      "expected_dirs": ["services/auth"],
+      "expected_files": ["services/auth/jwt_handler.go"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "DatabaseMaxIdleConnectionPoolSize",
+      "expected_dirs": ["services/database"],
+      "expected_files": ["services/database/connection_pool.go"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "SmtpRelayConnectionPool",
+      "expected_dirs": ["tools/mailer"],
+      "expected_files": ["tools/mailer/Mailer.cs"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "SnapshotDatabaseCluster",
+      "expected_dirs": ["tools/backup"],
+      "expected_files": ["tools/backup/backup.go"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "useAuthenticationContext",
+      "expected_dirs": ["frontend/src/auth"],
+      "expected_files": ["frontend/src/auth/AuthProvider.tsx"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "prod_database_replica",
+      "expected_dirs": ["infra/terraform"],
+      "expected_files": ["infra/terraform/main.tf"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "redis_cluster_master_nodes",
+      "expected_dirs": ["config"],
+      "expected_files": ["config/settings.toml"],
+      "min_prune_percent": 80.0
+    },
+    {
+      "token": "DefinitivelyAbsentToken_XYZ_99999",
+      "expected_dirs": [],
+      "expected_files": [],
+      "min_prune_percent": 100.0
+    }
+  ]
+}
