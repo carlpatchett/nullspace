@@ -15,7 +15,7 @@ func TestTelemetrySpanJSONL(t *testing.T) {
 	tracePath := filepath.Join(tmpDir, "test_trace.jsonl")
 
 	tel := New(Config{
-		ServiceName: "null-space-test",
+		ServiceName: "nullspace-test",
 		TracePath:   tracePath,
 	})
 	defer tel.Close()
@@ -78,7 +78,7 @@ func TestTelemetryConcurrency(t *testing.T) {
 	tracePath := filepath.Join(tmpDir, "concurrent_trace.jsonl")
 
 	tel := New(Config{
-		ServiceName: "null-space-test",
+		ServiceName: "nullspace-test",
 		TracePath:   tracePath,
 	})
 	defer tel.Close()

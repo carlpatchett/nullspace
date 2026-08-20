@@ -16,7 +16,7 @@ import (
 // MCP Server metadata and instructions.
 const (
 	ProtocolVersion    = "2024-11-05"
-	ServerName         = "null-space"
+	ServerName         = "nullspace"
 	ServerVersion      = "1.0.0"
 	ServerInstructions = "Lightning-fast negative search space pruner using in-memory Bloom filters. " +
 		"START by calling prune_search_space(token) before reading files or running broad greps: " +
@@ -39,7 +39,7 @@ func NewServer(idx *indexer.WorkspaceIndex, tel *telemetry.Telemetry) *Server {
 	}
 }
 
-// ToolsList returns the MCP tool definitions supported by null-space.
+// ToolsList returns the MCP tool definitions supported by nullspace.
 func (s *Server) ToolsList() []ToolDefinition {
 	return []ToolDefinition{
 		{

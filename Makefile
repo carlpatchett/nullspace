@@ -1,7 +1,7 @@
 .PHONY: all build test test-race lint fmt clean ci
 
 BIN_DIR := bin
-BINARY := $(BIN_DIR)/null-space
+BINARY := $(BIN_DIR)/nullspace
 GOLANGCI_LINT := $(shell which golangci-lint 2>/dev/null || echo $(HOME)/go/bin/golangci-lint)
 GCI := $(shell which gci 2>/dev/null || echo $(HOME)/go/bin/gci)
 
@@ -9,7 +9,7 @@ all: build
 
 build:
 	@mkdir -p $(BIN_DIR)
-	go build -v -o $(BINARY) ./cmd/null-space
+	go build -v -o $(BINARY) ./cmd/nullspace
 
 test:
 	go test -v ./...

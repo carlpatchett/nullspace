@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  null-space
+  nullspace
 </h1>
 
 <h4 align="center">Sub-millisecond In-Memory Bloom Filter Negative Search Space Pruning Engine for Model Context Protocol (MCP).</h4>
@@ -32,9 +32,9 @@
 <tr>
 <td>
 
-**null-space** is an ultra-low-latency negative search space pruning engine and Model Context Protocol (MCP) server that mathematically proves where code **definitively does not exist** across Go, Python, C#, JavaScript, TypeScript, Rust, Terraform, YAML, and configuration files in milliseconds.
+**nullspace** is an ultra-low-latency negative search space pruning engine and Model Context Protocol (MCP) server that mathematically proves where code **definitively does not exist** across Go, Python, C#, JavaScript, TypeScript, Rust, Terraform, YAML, and configuration files in milliseconds.
 
-By maintaining hierarchical, bitwise-ORed in-memory **Bloom filters** with **Kirsch-Mitzenmacher double hashing**, `null-space` eliminates blind greps and recursive directory crawling — instantly pruning **80% to 99%** of the repository with an absolute mathematical guarantee of **zero false negatives ($0.0\%$ FN)**.
+By maintaining hierarchical, bitwise-ORed in-memory **Bloom filters** with **Kirsch-Mitzenmacher double hashing**, `nullspace` eliminates blind greps and recursive directory crawling — instantly pruning **80% to 99%** of the repository with an absolute mathematical guarantee of **zero false negatives ($0.0\%$ FN)**.
 
 ```
 [Query: "DistributedKafkaStreamProcessor"]
@@ -58,8 +58,8 @@ By maintaining hierarchical, bitwise-ORed in-memory **Bloom filters** with **Kir
 # Configure private module routing
 export GOPRIVATE="github.com/carlpatchett/*"
 
-# Install latest binary directly to ~/go/bin/null-space
-go install github.com/carlpatchett/nullspace/cmd/null-space@latest
+# Install latest binary directly to ~/go/bin/nullspace
+go install github.com/carlpatchett/nullspace/cmd/nullspace@latest
 ```
 
 ##### 2. Via Authenticated One-Line Installer (Zero Dependencies):
@@ -70,12 +70,12 @@ curl -fsSL https://raw.githubusercontent.com/carlpatchett/nullspace/main/install
 > The installer automatically detects your existing `gh` CLI credentials or `$GITHUB_TOKEN` to authenticate and download pre-built cross-platform static binaries (`linux/amd64`, `linux/arm64`, `darwin/arm64`, `darwin/amd64`, `windows/amd64`) directly to `~/.local/bin/`.
 
 ##### 3. MCP Agent Host Configuration:
-Add `null-space` to your MCP client configuration (e.g. `~/.omp/agent/mcp.json`, Claude Desktop, Cursor, or Zed):
+Add `nullspace` to your MCP client configuration (e.g. `~/.omp/agent/mcp.json`, Claude Desktop, Cursor, or Zed):
 ```json
 {
   "mcpServers": {
     "nullspace": {
-      "command": "null-space"
+      "command": "nullspace"
     }
   }
 }
@@ -94,14 +94,14 @@ cd nullspace
 go test -v -race ./...
 
 # Build static binary
-go build -o bin/null-space ./cmd/null-space
+go build -o bin/nullspace ./cmd/nullspace
 ```
 
 ---
 
 ## Features
 
-| Capability | 🔰 `null-space` Engine | ◾ Blind Full-Workspace Grep |
+| Capability | 🔰 `nullspace` Engine | ◾ Blind Full-Workspace Grep |
 | :--- | :---: | :---: |
 | **Negative Proof Guarantee** | ✔️ **100% Recall ($0.0\%$ False Negatives)** | ❌ 0% (Blind scan required) |
 | **Search Space Reduction** | ✔️ **90% to 99% area eliminated** | ❌ 0% (Scans every file) |
@@ -121,7 +121,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 +-------------------------------------------------------------------------------+
 |                      AGGREGATE IMPACT ACROSS 3,647 FILES                      |
 +----------------------+----------------------+------------------+--------------+
-| Metric               | Baseline (Standard)  | With null-space  | Savings      |
+| Metric               | Baseline (Standard)  | With nullspace  | Savings      |
 +----------------------+----------------------+------------------+--------------+
 | Search Space Pruned  | 0% (Full Scan)       | 94.8% Average    | -94.8% Area  |
 | False Negative Rate  | N/A                  | 0.0% (100% Recall)| Zero FN      |
@@ -136,7 +136,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 #### 1. `fastapi/fastapi` (78k+ Stars, 3,139 Files, 432 Directories, Python)
 > **Day-to-Day Target Investigation:** *"Can you explain the usage and implementation of `OAuth2PasswordBearer` in this codebase? Cite where it is defined, how it is used, and what its role is in the architecture."*
 
-| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+| Metric | Baseline (No MCP) | With `nullspace` | Impact / Delta |
 | :--- | ---:| ---:| :--- |
 | **Directories Evaluated** | 432 directories | **26 candidates** (406 pruned) | **-94.0% dirs** |
 | **Files Evaluated** | 3,139 files | **72 candidates** (3,067 pruned) | **-97.7% search space** |
@@ -144,7 +144,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 
 > **Day-to-Day Negative Verification:** *"An engineer asked: 'Does this codebase implement or use `DistributedKafkaStreamProcessor`? If so, explain where; if not present, verify and confirm absence.'"*
 
-| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+| Metric | Baseline (No MCP) | With `nullspace` | Impact / Delta |
 | :--- | ---:| ---:| :--- |
 | **Directories Evaluated** | 432 directories | **5 candidates** (427 pruned) | **-98.8% dirs** |
 | **Files Evaluated** | 3,139 files | **22 candidates** (3,117 pruned) | **-99.3% search space** |
@@ -153,7 +153,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 #### 2. `expressjs/express` (65k+ Stars, 213 Files, 69 Directories, JavaScript/TypeScript)
 > **Routing Architecture Investigation:** *"Can you explain the usage and implementation of `Router` in this codebase? Cite where it is defined, how it is used, and what its role is."*
 
-| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+| Metric | Baseline (No MCP) | With `nullspace` | Impact / Delta |
 | :--- | ---:| ---:| :--- |
 | **Directories Evaluated** | 69 directories | **7 candidates** (62 pruned) | **-89.9% dirs** |
 | **Files Evaluated** | 213 files | **16 candidates** (197 pruned) | **-92.5% files** |
@@ -161,7 +161,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 
 > **Feature Sanity Check:** *"Does this codebase have a `DistributedCassandraSessionStore` middleware or session backend?"*
 
-| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+| Metric | Baseline (No MCP) | With `nullspace` | Impact / Delta |
 | :--- | ---:| ---:| :--- |
 | **Directories Evaluated** | 69 directories | **0 candidates** (69 pruned) | **-100.0% dirs** |
 | **Files Evaluated** | 213 files | **0 candidates** (213 pruned) | **-100.0% files** |
@@ -170,7 +170,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 #### 3. `dotnet/aspnetcore` (36.1k Stars, C#)
 > **Middleware & Pipeline Sanity Check:** *"Does ASP.NET Core implement an internal `KafkaDistributedResponseCache` provider, or is response caching strictly memory/redis-based?"*
 
-| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+| Metric | Baseline (No MCP) | With `nullspace` | Impact / Delta |
 | :--- | ---:| ---:| :--- |
 | **Directories Evaluated** | 385 directories | **0 candidates** (385 pruned) | **-100.0% dirs** |
 | **Files Evaluated** | 2,840 files | **0 candidates** (2,840 pruned) | **-100.0% files** |
@@ -245,7 +245,7 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
                     +------------------------+
 ```
 
-- **Kirsch-Mitzenmacher Double Hashing:** To evaluate $k$ hash functions with zero heap allocations, `null-space` derives $k$ bit indices from a single 128-bit MurmurHash3 pass:
+- **Kirsch-Mitzenmacher Double Hashing:** To evaluate $k$ hash functions with zero heap allocations, `nullspace` derives $k$ bit indices from a single 128-bit MurmurHash3 pass:
   $$g_i(x) = (h_1(x) + i \cdot h_2(x)) \pmod m \quad \text{for } i = 0, 1, \dots, k-1$$
 - **SIMD-Aligned Hierarchical Bitwise OR:** Each directory's recursive Bloom filter is the bitwise OR (`|`) of all its file filters and child directory filters. Unioning two 2 KB directory filters in Go takes **<120 nanoseconds**.
 - **Provable Negative Guarantees:** Bloom filters exhibit a false positive rate $p \approx (1 - e^{-kn/m})^k \le 0.03\%$, but have an exact **$0.0\%$ false negative rate**. If any bit is 0, the token cannot exist in that directory subtree.
@@ -256,18 +256,18 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 
 | Environment Variable | Default | Description |
 | :--- | :--- | :--- |
-| `NULL_SPACE_ROOT` | Current Working Directory | Root directory to index and resolve relative paths against. |
-| `NULL_SPACE_TRACE_PATH` | `./null_space_trace.jsonl` | Destination file path for OpenTelemetry JSONL span logs. |
-| `NULL_SPACE_EXCLUDES` | `.git,.jj,node_modules,.venv,...` | Comma-separated list of directory names to skip during indexing. |
+| `NULLSPACE_ROOT` | Current Working Directory | Root directory to index and resolve relative paths against. |
+| `NULLSPACE_TRACE_PATH` | `./null_space_trace.jsonl` | Destination file path for OpenTelemetry JSONL span logs. |
+| `NULLSPACE_EXCLUDES` | `.git,.jj,node_modules,.venv,...` | Comma-separated list of directory names to skip during indexing. |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | `""` (disabled) | Optional OTLP collector HTTP/gRPC endpoint for distributed tracing. |
 
 ---
 
 ## Telemetry & Observability
 
-`null-space` implements zero-overhead OpenTelemetry tracing:
+`nullspace` implements zero-overhead OpenTelemetry tracing:
 - Records workspace index build duration, per-query prune latency, candidate directory counts, and space reduction percentages.
-- Appends W3C-compliant JSONL records (`trace_id`, `span_id`, `duration_ms`, `null_space.*` attributes) to `NULL_SPACE_TRACE_PATH` without touching standard I/O (reserving `stdout` strictly for JSON-RPC MCP wire integrity).
+- Appends W3C-compliant JSONL records (`trace_id`, `span_id`, `duration_ms`, `null_space.*` attributes) to `NULLSPACE_TRACE_PATH` without touching standard I/O (reserving `stdout` strictly for JSON-RPC MCP wire integrity).
 
 ---
 

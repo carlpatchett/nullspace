@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""A/B evaluation driven through omp — real agent runs comparing search with vs without null-space.
+"""A/B evaluation driven through omp — real agent runs comparing search with vs without nullspace.
 
 Simulates realistic, day-to-day engineering workflows:
 1. Symbol Investigation: "Explain how <Symbol> is implemented and used in this codebase, citing files and architecture."
 2. Feature Verification / Negative Lookups: "Does this codebase implement <AbsentFeature>? If so, explain how; if not, confirm absence."
 
-Baseline arm: a copy of the target codebase, NO null-space anywhere.
+Baseline arm: a copy of the target codebase, NO nullspace anywhere.
 Augmented arm: an identical copy whose project ``.omp/mcp.json`` registers
-null-space against that copy. Both arms run ``omp -p --mode json`` with the
+nullspace against that copy. Both arms run ``omp -p --mode json`` with the
 same model, same prompt. Metrics come from omp's usage telemetry (input/output tokens and cost in USD),
-tool-execution event stream, and null-space's OpenTelemetry JSONL spans for the augmented arm.
+tool-execution event stream, and nullspace's OpenTelemetry JSONL spans for the augmented arm.
 
 Usage:
   python3 evals/omp_eval.py --repo https://github.com/fastapi/fastapi --symbol OAuth2PasswordBearer
@@ -34,7 +34,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-BINARY_PATH = REPO_ROOT / "bin" / "null-space"
+BINARY_PATH = REPO_ROOT / "bin" / "nullspace"
 GROUND_TRUTH_PATH = REPO_ROOT / "evals" / "ground_truth.json"
 RESULTS_DIR = REPO_ROOT / "evals" / "results"
 
@@ -77,9 +77,9 @@ def generate_task_prompt(symbol: str, is_negative: bool = False) -> tuple[str, s
 def ensure_binary() -> Path:
     BINARY_PATH.parent.mkdir(parents=True, exist_ok=True)
     if not BINARY_PATH.exists():
-        print(f"Building null-space binary at {BINARY_PATH}...", file=sys.stderr)
+        print(f"Building nullspace binary at {BINARY_PATH}...", file=sys.stderr)
         subprocess.run(
-            ["go", "build", "-o", str(BINARY_PATH), "./cmd/null-space"],
+            ["go", "build", "-o", str(BINARY_PATH), "./cmd/nullspace"],
             cwd=str(REPO_ROOT),
             check=True,
         )
@@ -87,7 +87,7 @@ def ensure_binary() -> Path:
 
 
 def prepare_fixture_copies(base: Path, source_dir: Path) -> tuple[Path, Path, Path]:
-    """Two identical fixture copies; the augmented one registers null-space."""
+    """Two identical fixture copies; the augmented one registers nullspace."""
     baseline = base / "baseline_repo"
     augmented = base / "augmented_repo"
     shutil.copytree(source_dir, baseline)
@@ -100,12 +100,12 @@ def prepare_fixture_copies(base: Path, source_dir: Path) -> tuple[Path, Path, Pa
             "packages/coding-agent/src/config/mcp-schema.json"
         ),
         "mcpServers": {
-            "null-space": {
+            "nullspace": {
                 "command": str(BINARY_PATH),
                 "args": ["--root", str(augmented), "--trace", str(trace_path), "serve"],
                 "env": {
-                    "NULL_SPACE_ROOT": str(augmented),
-                    "NULL_SPACE_TRACE_PATH": str(trace_path),
+                    "NULLSPACE_ROOT": str(augmented),
+                    "NULLSPACE_TRACE_PATH": str(trace_path),
                 },
             }
         },
@@ -119,7 +119,7 @@ def prepare_fixture_copies(base: Path, source_dir: Path) -> tuple[Path, Path, Pa
 def isolated_user_mcp(home: Path | None = None):
     """Move the user-level omp mcp.json aside; restore on exit."""
     path = (home or Path.home()) / ".omp" / "agent" / "mcp.json"
-    backup = path.with_name("mcp.json.null-space-eval-swap")
+    backup = path.with_name("mcp.json.nullspace-eval-swap")
     moved = False
     if path.exists():
         path.rename(backup)
@@ -264,13 +264,13 @@ def generate_omp_markdown_report(report_data: dict) -> str:
     time_save = compute_relative_savings(base["wall_seconds"], aug["wall_seconds"])
 
     md = [
-        "# null-space Empirical A/B Benchmark Report",
+        "# nullspace Empirical A/B Benchmark Report",
         f"\n**Timestamp:** {report_data['timestamp']}",
         f"**Model:** `{report_data['model']}`",
         f"**Target Codebase:** `{report_data['codebase']}`",
         f"**Task Symbol:** `{report_data['symbol']}` (Negative Check: {report_data['is_negative']})\n",
         "## Comparative Performance\n",
-        "| Metric | Baseline (No MCP) | Augmented (+ null-space) | Delta / Savings |",
+        "| Metric | Baseline (No MCP) | Augmented (+ nullspace) | Delta / Savings |",
         "|---|---:|---:|---|",
         f"| **Input Tokens** | {base['usage']['input']:,} | {aug['usage']['input']:,} | **{in_save}** |",
         f"| **Output Tokens** | {base['usage']['output']:,} | {aug['usage']['output']:,} | **{out_save}** |",
@@ -290,12 +290,12 @@ def generate_omp_markdown_report(report_data: dict) -> str:
         md.append(f"\n### OpenTelemetry Server Spans ({len(spans)} recorded)")
         md.append(f"- **Average Prune Latency:** {avg_dur:.3f} ms")
 
-    md.append("\n---\n*Report generated by `null-space/evals/omp_eval.py`*")
+    md.append("\n---\n*Report generated by `nullspace/evals/omp_eval.py`*")
     return "\n".join(md)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="null-space omp A/B evaluation")
+    parser = argparse.ArgumentParser(description="nullspace omp A/B evaluation")
     parser.add_argument(
         "--model",
         default=DEFAULT_MODEL,
@@ -366,7 +366,7 @@ def main():
             f"Baseline completed in {base_res['wall_seconds']}s (LLM calls: {base_res['llm_calls']}, input tokens: {base_res['usage']['input']})"
         )
 
-        print(f"\n=== Running Augmented Arm (+ null-space) on {codebase_name} ===")
+        print(f"\n=== Running Augmented Arm (+ nullspace) on {codebase_name} ===")
         print(f"Task: {aug_task}\n")
         with isolated_user_mcp():
             aug_res = run_arm(

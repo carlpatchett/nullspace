@@ -44,27 +44,27 @@ jobs:
         run: |
           mkdir -p dist
           PLATFORMS=(
-            "linux/amd64/null-space"
-            "linux/arm64/null-space"
-            "darwin/amd64/null-space"
-            "darwin/arm64/null-space"
-            "windows/amd64/null-space.exe"
+            "linux/amd64/nullspace"
+            "linux/arm64/nullspace"
+            "darwin/amd64/nullspace"
+            "darwin/arm64/nullspace"
+            "windows/amd64/nullspace.exe"
           )
           for PLATFORM in "${PLATFORMS[@]}"; do
             GOOS=$(echo "$PLATFORM" | cut -d/ -f1)
             GOARCH=$(echo "$PLATFORM" | cut -d/ -f2)
             BIN_NAME=$(echo "$PLATFORM" | cut -d/ -f3)
-            TARGET_DIR="dist/null-space_${VERSION}_${GOOS}_${GOARCH}"
+            TARGET_DIR="dist/nullspace_${VERSION}_${GOOS}_${GOARCH}"
             mkdir -p "$TARGET_DIR"
             echo "Building $GOOS/$GOARCH..."
             CGO_ENABLED=0 GOOS=$GOOS GOARCH=$GOARCH go build \
               -ldflags="-s -w -X main.Version=${VERSION}" \
-              -o "$TARGET_DIR/$BIN_NAME" ./cmd/null-space
+              -o "$TARGET_DIR/$BIN_NAME" ./cmd/nullspace
             
             if [ "$GOOS" = "windows" ]; then
-              (cd dist && zip -r "null-space_${VERSION}_${GOOS}_${GOARCH}.zip" "null-space_${VERSION}_${GOOS}_${GOARCH}")
+              (cd dist && zip -r "nullspace_${VERSION}_${GOOS}_${GOARCH}.zip" "nullspace_${VERSION}_${GOOS}_${GOARCH}")
             else
-              tar -czvf "dist/null-space_${VERSION}_${GOOS}_${GOARCH}.tar.gz" -C dist "null-space_${VERSION}_${GOOS}_${GOARCH}"
+              tar -czvf "dist/nullspace_${VERSION}_${GOOS}_${GOARCH}.tar.gz" -C dist "nullspace_${VERSION}_${GOOS}_${GOARCH}"
             fi
           done
 

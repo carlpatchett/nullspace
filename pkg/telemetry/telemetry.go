@@ -102,12 +102,12 @@ type Telemetry struct {
 func New(cfg Config) *Telemetry {
 	serviceName := cfg.ServiceName
 	if serviceName == "" {
-		serviceName = "null-space"
+		serviceName = "nullspace"
 	}
 
 	tracePath := cfg.TracePath
 	if tracePath == "" {
-		tracePath = os.Getenv("NULL_SPACE_TRACE_PATH")
+		tracePath = os.Getenv("NULLSPACE_TRACE_PATH")
 	}
 	if tracePath == "" {
 		tracePath = "null_space_trace.jsonl"

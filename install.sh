@@ -2,7 +2,7 @@
 set -e
 
 REPO="carlpatchett/nullspace"
-BINARY="null-space"
+BINARY="nullspace"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/bin}"
 
 # Detect OS and Arch
@@ -35,7 +35,7 @@ if [ -z "$TAG" ]; then
   exit 1
 fi
 
-ARCHIVE="null-space_${TAG}_${OS}_${ARCH}.tar.gz"
+ARCHIVE="nullspace_${TAG}_${OS}_${ARCH}.tar.gz"
 echo "Downloading $ARCHIVE ($TAG)..."
 
 mkdir -p "$INSTALL_DIR"
@@ -49,7 +49,7 @@ else
 fi
 
 tar -xzf "$TMP_DIR/$ARCHIVE" -C "$TMP_DIR"
-cp "$TMP_DIR/null-space_${TAG}_${OS}_${ARCH}/$BINARY" "$INSTALL_DIR/$BINARY"
+cp "$TMP_DIR/nullspace_${TAG}_${OS}_${ARCH}/$BINARY" "$INSTALL_DIR/$BINARY"
 chmod +x "$INSTALL_DIR/$BINARY"
 
 echo "Successfully installed $BINARY ($TAG) to $INSTALL_DIR/$BINARY"

@@ -1,4 +1,4 @@
-// Package main provides the null-space CLI and MCP server executable.
+// Package main provides the nullspace CLI and MCP server executable.
 package main
 
 import (
@@ -19,22 +19,22 @@ func main() {
 	var excludeFlag string
 	var modeFlag string
 
-	flag.StringVar(&rootFlag, "root", "", "Workspace root directory (or NULL_SPACE_ROOT env)")
-	flag.StringVar(&traceFlag, "trace", "", "OpenTelemetry JSONL trace log path (or NULL_SPACE_TRACE_PATH env)")
-	flag.StringVar(&excludeFlag, "exclude", "", "Comma-separated directory names to exclude (or NULL_SPACE_EXCLUDES env)")
+	flag.StringVar(&rootFlag, "root", "", "Workspace root directory (or NULLSPACE_ROOT env)")
+	flag.StringVar(&traceFlag, "trace", "", "OpenTelemetry JSONL trace log path (or NULLSPACE_TRACE_PATH env)")
+	flag.StringVar(&excludeFlag, "exclude", "", "Comma-separated directory names to exclude (or NULLSPACE_EXCLUDES env)")
 	flag.StringVar(&modeFlag, "mode", "serve", "Operating mode: serve (MCP stdio), prune, check, stats")
 	flag.Parse()
 
 	// Environment variable overrides
 	if rootFlag == "" {
-		rootFlag = os.Getenv("NULL_SPACE_ROOT")
+		rootFlag = os.Getenv("NULLSPACE_ROOT")
 	}
 	if rootFlag == "" {
 		rootFlag = "."
 	}
 
 	if traceFlag == "" {
-		traceFlag = os.Getenv("NULL_SPACE_TRACE_PATH")
+		traceFlag = os.Getenv("NULLSPACE_TRACE_PATH")
 	}
 	if traceFlag == "" {
 		traceFlag = "null_space_trace.jsonl"
@@ -42,7 +42,7 @@ func main() {
 
 	excludes := indexer.DefaultExcludes
 	if excludeFlag == "" {
-		excludeFlag = os.Getenv("NULL_SPACE_EXCLUDES")
+		excludeFlag = os.Getenv("NULLSPACE_EXCLUDES")
 	}
 	if excludeFlag != "" {
 		for _, e := range strings.Split(excludeFlag, ",") {
@@ -54,7 +54,7 @@ func main() {
 	}
 
 	tel := telemetry.New(telemetry.Config{
-		ServiceName: "null-space",
+		ServiceName: "nullspace",
 		TracePath:   traceFlag,
 	})
 	defer func() { _ = tel.Close() }()
@@ -64,7 +64,7 @@ func main() {
 
 	idx, err := indexer.New(cfg)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "null-space: error initializing index: %v\n", err)
+		fmt.Fprintf(os.Stderr, "nullspace: error initializing index: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -78,7 +78,7 @@ func main() {
 	switch subcommand {
 	case "prune":
 		if len(args) == 0 {
-			fmt.Fprintln(os.Stderr, "Usage: null-space prune <token> [--case-sensitive]")
+			fmt.Fprintln(os.Stderr, "Usage: nullspace prune <token> [--case-sensitive]")
 			os.Exit(1)
 		}
 		token := args[0]
@@ -93,7 +93,7 @@ func main() {
 
 	case "check":
 		if len(args) == 0 {
-			fmt.Fprintln(os.Stderr, "Usage: null-space check <token> [path]")
+			fmt.Fprintln(os.Stderr, "Usage: nullspace check <token> [path]")
 			os.Exit(1)
 		}
 		token := args[0]
@@ -120,7 +120,7 @@ func main() {
 
 	default: // "serve" or default
 		if err := mcp.RunStdio(idx, tel); err != nil {
-			fmt.Fprintf(os.Stderr, "null-space MCP server error: %v\n", err)
+			fmt.Fprintf(os.Stderr, "nullspace MCP server error: %v\n", err)
 			os.Exit(1)
 		}
 	}
