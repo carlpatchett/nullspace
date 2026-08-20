@@ -1,5 +1,7 @@
 <h1 align="center">
   <br>
+  <img src="assets/banner.jpg" alt="nullspace banner" width="100%">
+  <br>
   nullspace
 </h1>
 
