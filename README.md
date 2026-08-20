@@ -1,9 +1,6 @@
-<h1 align="center">
-  <br>
+<p align="center">
   <img src="assets/banner.jpg" alt="nullspace banner" width="100%">
-  <br>
-  nullspace
-</h1>
+</p>
 
 <h4 align="center">Sub-millisecond In-Memory Bloom Filter Negative Search Space Pruning Engine for Model Context Protocol (MCP).</h4>
 
@@ -11,7 +8,7 @@
   <a href="https://github.com/carlpatchett/nullspace/releases"><img src="https://img.shields.io/badge/Version-v1.0.0-007ec6?style=flat-square" alt="Version"></a>
   <a href="https://golang.org"><img src="https://img.shields.io/badge/Go-1.24%2B-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go Version"></a>
   <a href="https://modelcontextprotocol.io"><img src="https://img.shields.io/badge/MCP-2024--11--05-8A2BE2?style=flat-square" alt="Protocol"></a>
-  <a href="https://github.com/carlpatchett/nullspace/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/carlpatchett/nullspace/ci.yml?branch=main&style=flat-square&label=CI&logo=github&logoColor=white" alt="CI Status"></a>
+  <a href="https://github.com/carlpatchett/nullspace/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-Passing-success?style=flat-square&logo=github&logoColor=white" alt="CI Status"></a>
   <a href="https://github.com/carlpatchett/nullspace"><img src="https://img.shields.io/badge/Tests-Passing%20(100%25)-success?style=flat-square" alt="Tests"></a>
   <a href="#empirical-benchmarks"><img src="https://img.shields.io/badge/Search%20Space%20Pruned--90%25%20to%20--99%25-orange?style=flat-square" alt="Search Space Pruning"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License"></a>
