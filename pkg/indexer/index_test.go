@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"null-space/pkg/telemetry"
+	"github.com/carlpatchett/nullspace/pkg/telemetry"
 )
 
 func createTestWorkspace(t *testing.T) string {

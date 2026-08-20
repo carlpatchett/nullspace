@@ -12,9 +12,9 @@ import (
 	"sync"
 	"time"
 
-	"null-space/pkg/bloom"
-	"null-space/pkg/extractor"
-	"null-space/pkg/telemetry"
+	"github.com/carlpatchett/nullspace/pkg/bloom"
+	"github.com/carlpatchett/nullspace/pkg/extractor"
+	"github.com/carlpatchett/nullspace/pkg/telemetry"
 )
 
 // DefaultExcludes contains directories skipped by default.

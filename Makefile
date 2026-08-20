@@ -23,7 +23,7 @@ lint:
 fmt:
 	@gofmt -w cmd pkg
 	@if [ -f "$(GCI)" ]; then \
-		$(GCI) write --skip-generated -s standard -s default -s "prefix(null-space)" cmd pkg; \
+		$(GCI) write --skip-generated -s standard -s default -s "prefix(github.com/carlpatchett/nullspace)" cmd pkg; \
 	fi
 
 clean:

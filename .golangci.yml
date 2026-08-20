@@ -28,7 +28,7 @@ linters-settings:
     sections:
       - standard
       - default
-      - prefix(null-space)
+      - prefix(github.com/carlpatchett/nullspace)
   revive:
     rules:
       - name: exported

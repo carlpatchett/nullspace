@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"null-space/pkg/indexer"
-	"null-space/pkg/mcp"
-	"null-space/pkg/telemetry"
+	"github.com/carlpatchett/nullspace/pkg/indexer"
+	"github.com/carlpatchett/nullspace/pkg/mcp"
+	"github.com/carlpatchett/nullspace/pkg/telemetry"
 )
 
 func main() {

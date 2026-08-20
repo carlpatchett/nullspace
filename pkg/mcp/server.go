@@ -9,8 +9,8 @@ import (
 	"strings"
 	"sync"
 
-	"null-space/pkg/indexer"
-	"null-space/pkg/telemetry"
+	"github.com/carlpatchett/nullspace/pkg/indexer"
+	"github.com/carlpatchett/nullspace/pkg/telemetry"
 )
 
 // MCP Server metadata and instructions.

@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"null-space/pkg/indexer"
-	"null-space/pkg/telemetry"
+	"github.com/carlpatchett/nullspace/pkg/indexer"
+	"github.com/carlpatchett/nullspace/pkg/telemetry"
 )
 
 func createTestWorkspaceForMCP(t *testing.T) string {
