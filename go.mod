@@ -1,3 +1,3 @@
 module null-space
 
-go 1.26.6
+go 1.23.0

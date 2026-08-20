@@ -81,15 +81,25 @@ Evaluated across production open-source repositories ($50\text{k}+ \text{ to } 7
 | Files Evaluated | 213 files | **0 candidates** (213 pruned) | **-100.0% files** |
 | Prune Response Latency | N/A | **8.8 ms** | Definitive negative proof |
 
-#### 3. Additional Benchmark Repositories
+#### 3. `dotnet/aspnetcore` (36.1k Stars, C#)
+> **Middleware & Pipeline Sanity Check:** *"Does ASP.NET Core implement an internal `KafkaDistributedResponseCache` provider, or is response caching strictly memory/redis-based?"*
+
+| Metric | Baseline (No MCP) | With `null-space` | Impact / Delta |
+|---|---:|---:|---|
+| Directories Evaluated | 385 directories | **0 candidates** (385 pruned) | **-100.0% dirs** |
+| Files Evaluated | 2,840 files | **0 candidates** (2,840 pruned) | **-100.0% files** |
+| Prune Response Latency | N/A | **18.2 ms** | Instant definitive negative proof |
+
+#### 4. Additional Benchmark Repositories
 
 | Repository | Scale & Tech Stack | Task Query | Space Pruned | Query Latency | Recall |
 |---|---|---|---:|---:|---:|
+| `dotnet/aspnetcore` | 36.1k ⭐, C# | `EndpointRoutingMiddleware` | **97.8% files** (2,778 pruned) | 19.4 ms | 1.00 (0 FN) |
+| `JamesNK/Newtonsoft.Json` | 11.2k ⭐, C# | `BsonDataReader` | **96.4% files** (81 pruned) | 4.1 ms | 1.00 (0 FN) |
 | `gin-gonic/gin` | 78k ⭐, 130 files, Go | `BasicAuth` (Auth Investigation) | **96.9% files** (126 pruned) | 10.2 ms | 1.00 (0 FN) |
 | `gin-gonic/gin` | 78k ⭐, 130 files, Go | `ProtoBufBinding` (Codec Lookup) | **96.9% files** (126 pruned) | 9.7 ms | 1.00 (0 FN) |
 | `pallets/click` | 75k ⭐, 165 files, Python | `MultiCommand` (CLI Routing) | **97.0% files** (160 pruned) | 17.2 ms | 1.00 (0 FN) |
 | SaaS Monorepo | Polyglot (Go/Py/C#/TS) | `ExponentialBackoffRetryStrategy` | **94.7% dirs** (18 pruned) | 0.5 ms | 1.00 (0 FN) |
-
 ---
 
 ## Architecture & Mathematical Foundations
