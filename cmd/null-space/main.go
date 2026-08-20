@@ -1,3 +1,4 @@
+// Package main provides the null-space CLI and MCP server executable.
 package main
 
 import (
@@ -56,8 +57,7 @@ func main() {
 		ServiceName: "null-space",
 		TracePath:   traceFlag,
 	})
-	defer tel.Close()
-
+	defer func() { _ = tel.Close() }()
 	cfg := indexer.DefaultConfig(rootFlag)
 	cfg.Excludes = excludes
 	cfg.Telemetry = tel
@@ -118,10 +118,7 @@ func main() {
 		data, _ := json.MarshalIndent(stats, "", "  ")
 		fmt.Println(string(data))
 
-	case "serve":
-		fallthrough
-	default:
-		// Default mode: MCP Server over stdio
+	default: // "serve" or default
 		if err := mcp.RunStdio(idx, tel); err != nil {
 			fmt.Fprintf(os.Stderr, "null-space MCP server error: %v\n", err)
 			os.Exit(1)

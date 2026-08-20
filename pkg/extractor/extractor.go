@@ -1,3 +1,4 @@
+// Package extractor provides high-throughput lexical token extraction.
 package extractor
 
 import (
@@ -48,7 +49,7 @@ func ExtractTokens(path string, content []byte, opts ExtractOptions) TokenSet {
 	set := NewTokenSet()
 
 	// 1. Filename tokens
-	if len(path) > 0 {
+	if path != "" {
 		ExtractFilenameTokens(path, &set)
 	}
 
@@ -190,7 +191,7 @@ func isIdentPart(b byte) bool {
 }
 
 func addIdentifierTokens(ident string, tokenType TokenType, set *TokenSet, opts ExtractOptions) {
-	if len(ident) == 0 {
+	if ident == "" {
 		return
 	}
 
@@ -217,7 +218,7 @@ func addIdentifierTokens(ident string, tokenType TokenType, set *TokenSet, opts 
 
 func addStringLiteralTokens(lit string, set *TokenSet, opts ExtractOptions) {
 	lit = strings.TrimSpace(lit)
-	if len(lit) == 0 {
+	if lit == "" {
 		return
 	}
 

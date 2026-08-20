@@ -134,7 +134,8 @@ func TestBloomFilterUnion(t *testing.T) {
 	}
 
 	// All tokens from set1 and set2 must be contained in unionFilter
-	allTokens := append(set1, set2...)
+	allTokens := append([]string(nil), set1...)
+	allTokens = append(allTokens, set2...)
 	for _, tok := range allTokens {
 		if !unionFilter.ContainsString(tok) {
 			t.Fatalf("token %q missing from union filter", tok)

@@ -1,3 +1,4 @@
+// Package bloom provides high-performance, zero-allocation Bloom filters.
 package bloom
 
 import (
@@ -75,7 +76,7 @@ func NewForCapacity(expectedItems uint64, falsePositiveRate float64) *Filter {
 		falsePositiveRate = 0.01 // 1% default
 	}
 
-	// m = - (n * ln(p)) / (ln(2)^2)
+	// Calculate optimal bit count m = -(n * ln(p)) / (ln(2)^2)
 	n := float64(expectedItems)
 	ln2 := math.Ln2
 	m := -1.0 * (n * math.Log(falsePositiveRate)) / (ln2 * ln2)
@@ -84,14 +85,13 @@ func NewForCapacity(expectedItems uint64, falsePositiveRate float64) *Filter {
 		numBits = 64
 	}
 
-	// k = (m / n) * ln(2)
+	// Calculate optimal hash count k = (m / n) * ln(2)
 	k := int(math.Round((float64(numBits) / n) * ln2))
 	if k < 1 {
 		k = 1
 	} else if k > 16 {
 		k = 16
 	}
-
 	return NewWithConfig(Config{
 		NumBits:   numBits,
 		HashCount: k,
@@ -119,7 +119,7 @@ func (f *Filter) Add(token []byte) {
 
 // AddString inserts a string token into the Bloom filter without heap allocation.
 func (f *Filter) AddString(s string) {
-	if len(s) == 0 {
+	if s == "" {
 		return
 	}
 	// Zero-allocation string-to-byte conversion (read-only)
@@ -152,7 +152,7 @@ func (f *Filter) Contains(token []byte) bool {
 
 // ContainsString tests whether a string token is possibly in the set without heap allocation.
 func (f *Filter) ContainsString(s string) bool {
-	if len(s) == 0 {
+	if s == "" {
 		return false
 	}
 	b := unsafe.Slice(unsafe.StringData(s), len(s))

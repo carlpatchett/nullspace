@@ -1,3 +1,4 @@
+// Package indexer provides index types and search space pruning results.
 package indexer
 
 import (

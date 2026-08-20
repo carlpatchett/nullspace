@@ -1,3 +1,4 @@
+// Package telemetry provides lightweight OpenTelemetry-compatible tracing with JSONL file logging.
 package telemetry
 
 import (
@@ -27,7 +28,6 @@ type Span struct {
 	name       string
 	traceID    string
 	spanID     string
-	parentID   string
 	startNS    int64
 	attributes map[string]any
 	mu         sync.Mutex

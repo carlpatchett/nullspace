@@ -1,3 +1,4 @@
+// Package bloom provides Murmur3 hashing and Bloom filter data structures.
 package bloom
 
 import (

@@ -13,6 +13,7 @@ import (
 	"null-space/pkg/telemetry"
 )
 
+// MCP Server metadata and instructions.
 const (
 	ProtocolVersion    = "2024-11-05"
 	ServerName         = "null-space"
@@ -123,10 +124,9 @@ func (s *Server) Serve(in io.Reader, out io.Writer) error {
 
 	for scanner.Scan() {
 		line := scanner.Bytes()
-		if len(strings.TrimSpace(string(line))) == 0 {
+		if strings.TrimSpace(string(line)) == "" {
 			continue
 		}
-
 		var req Request
 		if err := json.Unmarshal(line, &req); err != nil {
 			s.sendError(encoder, nil, ErrCodeParseError, "Parse error: "+err.Error())
@@ -329,7 +329,7 @@ func (s *Server) executeTool(name string, args map[string]any) CallToolResult {
 	}
 }
 
-func (s *Server) sendResult(encoder *json.Encoder, id any, result any) {
+func (s *Server) sendResult(encoder *json.Encoder, id, result any) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	_ = encoder.Encode(Response{

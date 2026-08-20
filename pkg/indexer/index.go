@@ -1,3 +1,4 @@
+// Package indexer builds hierarchical Bloom filter indices over entire codebases.
 package indexer
 
 import (

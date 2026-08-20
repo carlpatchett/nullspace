@@ -9,6 +9,7 @@ import (
 // TokenType categorizes extracted code tokens.
 type TokenType int
 
+// TokenType constants identifying the syntactic role of a token.
 const (
 	TokenIdentifier TokenType = iota
 	TokenFunctionCall
@@ -39,7 +40,7 @@ func NewTokenSet() TokenSet {
 // Add adds a token to the set, preserving the highest-priority token type.
 func (ts *TokenSet) Add(text string, tokenType TokenType) {
 	text = strings.TrimSpace(text)
-	if len(text) == 0 {
+	if text == "" {
 		return
 	}
 	if _, exists := ts.Tokens[text]; !exists {
@@ -66,7 +67,7 @@ func (ts *TokenSet) List() []string {
 // E.g. "ExponentialBackoffRetryStrategy" -> ["Exponential", "Backoff", "Retry", "Strategy"]
 // E.g. "db_connection_pool_v2" -> ["db", "connection", "pool", "v2"]
 func SplitSubtokens(identifier string) []string {
-	if len(identifier) == 0 {
+	if identifier == "" {
 		return nil
 	}
 
@@ -130,10 +131,9 @@ func ExtractFilenameTokens(path string, set *TokenSet) {
 		set.Add(ext[1:], TokenFilename) // e.g. "go" from ".go"
 	}
 
-	if len(nameWithoutExt) > 0 {
+	if nameWithoutExt != "" {
 		set.Add(nameWithoutExt, TokenFilename)
 		set.Add(strings.ToLower(nameWithoutExt), TokenFilename)
-
 		// Subtokens from filename
 		for _, sub := range SplitSubtokens(nameWithoutExt) {
 			if len(sub) > 1 {
@@ -146,8 +146,7 @@ func ExtractFilenameTokens(path string, set *TokenSet) {
 	// Path segments
 	parts := strings.Split(cleanPath, "/")
 	for _, part := range parts {
-		if len(part) > 0 && part != "." && part != ".." {
-			set.Add(part, TokenFilename)
+		if part != "" && part != "." && part != ".." {
 			set.Add(strings.ToLower(part), TokenFilename)
 			for _, sub := range SplitSubtokens(part) {
 				if len(sub) > 1 {
